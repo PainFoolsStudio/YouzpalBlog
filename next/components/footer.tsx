@@ -2,16 +2,20 @@ import React from "react";
 import { Logo } from "@/components/logo";
 import { Link } from "next-view-transitions";
 
-export const Footer = async ({ data, locale }: { data: any, locale: string }) => {
+export const Footer = async ({
+  data,
+  locale,
+}: {
+  data: any;
+  locale: string;
+}) => {
   return (
     <div className="relative">
       <div className="border-t border-neutral-900 px-8 pt-20 pb-32 relative bg-primary">
         <div className="max-w-7xl mx-auto text-sm text-neutral-500 flex sm:flex-row flex-col justify-between items-start ">
           <div>
             <div className="mr-4  md:flex mb-4">
-              {data?.logo?.image && (
-                <Logo image={data?.logo?.image} />
-              )}
+              {data?.logo?.image && <Logo image={data?.logo?.image} />}
             </div>
             <div className="max-w-xs">{data?.description}</div>
             <div className="mt-4">{data?.copyright}</div>
@@ -19,8 +23,8 @@ export const Footer = async ({ data, locale }: { data: any, locale: string }) =>
               Designed and Developed by{" "}
               <a className="text-white underline" href="https://aceternity.com">
                 Aceternity
-              </a>
-              {" "}&{" "}
+              </a>{" "}
+              &{" "}
               <a className="text-white underline" href="https://strapi.io">
                 Strapi
               </a>
@@ -68,13 +72,19 @@ export const Footer = async ({ data, locale }: { data: any, locale: string }) =>
   );
 };
 
-const LinkSection = ({ links, locale }: { links: { text: string; URL: never | string }[], locale: string }) => (
+const LinkSection = ({
+  links,
+  locale,
+}: {
+  links: { text: string; URL: never | string }[];
+  locale: string;
+}) => (
   <div className="flex justify-center space-y-4 flex-col mt-4">
-    {links.map((link) => (
+    {links?.map((link) => (
       <Link
         key={link.text}
         className="transition-colors hover:text-neutral-400 text-muted text-xs sm:text-sm"
-        href={`${link.URL.startsWith('http') ? '' : `/${locale}`}${link.URL}`}
+        href={`${link.URL.startsWith("http") ? "" : `/${locale}`}${link.URL}`}
       >
         {link.text}
       </Link>
